@@ -5,10 +5,11 @@
   "author": "bahung <bahung1221@gmail.com>",
   "private": true,
   "scripts": {
-    "run:local": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "run:local": "cross-env NODE_ENV=local webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "run:styleguide": "vue-styleguidist server",
     "lint": "eslint --ext .js,.vue src",
-    "build": "node build/build.js"
+    "build:staging": "cross-env NODE_ENV=staging node build/build.js",
+    "build:prod": "cross-env NODE_ENV=production node build/build.js"
   },
   "husky": {
     "hooks": {
@@ -27,7 +28,8 @@
     "jquery.dotdotdot": "^3.2.3",
     "dotenv-safe": "^6.1.0",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "cross-env": "^5.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.6.0",
