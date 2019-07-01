@@ -1,4 +1,18 @@
 'use strict'
+
+// Config env
+const ENV = process.env.NODE_ENV
+if (!ENV || ['production', 'staging', 'local'].indexOf(ENV) === -1) {
+  console.log('No NODE_ENV...')
+  process.exit(0)
+}
+
+require('dotenv-safe').config({
+  example: '.env.cli.example',
+  path: `.env.cli.${ENV}`,
+  allowEmptyValues: true
+})
+
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
